@@ -4,6 +4,7 @@
     "description": "Electron example app",
     "main": "main.js",
     "scripts": {
+        "start": "./node_modules/.bin/electron .",
         "test": "test"
     },
     "repository": {
