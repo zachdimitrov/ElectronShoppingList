@@ -16,5 +16,8 @@
         "shopping"
     ],
     "author": "Zach Dimitrov",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^1.8.2"
+    }
 }
