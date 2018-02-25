@@ -2,7 +2,7 @@ const electron = require("electron");
 const url = require("url");
 const path = require("path");
 
-const { app, BrowserWindow, Menu } = electron;
+const { app, BrowserWindow, Menu, ipcMain } = electron;
 
 let mainWindow;
 let addWindow;
@@ -11,7 +11,9 @@ let addWindow;
 
 app.on("ready", () => {
     // create new window
-    mainWindow = new BrowserWindow({});
+    mainWindow = new BrowserWindow({
+        icon: __dirname + "/assets/favicon.ico",
+    });
     // load html file
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, "main-window.html"),
@@ -37,6 +39,7 @@ function createAddWindow() {
         width: 300,
         height: 200,
         title: "Add Shopping List Item",
+        icon: __dirname + "/assets/favicon.ico",
     });
 
     // load html file
@@ -52,16 +55,28 @@ function createAddWindow() {
     })
 }
 
+// catch item:add
+ipcMain.on("item:add", (e, item) => {
+    mainWindow.webContents.send("item:add", item);
+    addWindow.close();
+});
+
 // create menu template
 const mainMenuTemplate = [{
     label: "File",
     submenu: [{
             label: "Add Item",
+            accelerator: process.platform == "darwin" ? "Command+A" : "Ctrl+shift+A",
             click: () => {
                 createAddWindow();
             }
         },
-        { label: "Clear Items" },
+        {
+            label: "Clear Items",
+            click: () => {
+                mainWindow.webContents.send("items:clear");
+            }
+        },
         {
             label: "Quit",
             accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
