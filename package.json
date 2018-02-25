@@ -1,0 +1,20 @@
+{
+    "name": "shoppinglist",
+    "version": "1.0.0",
+    "description": "Electron example app",
+    "main": "main.js",
+    "scripts": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zachdimitrov/ElectronShoppingList"
+    },
+    "keywords": [
+        "electron",
+        "desktop",
+        "shopping"
+    ],
+    "author": "Zach Dimitrov",
+    "license": "MIT"
+}
