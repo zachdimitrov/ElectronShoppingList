@@ -1,14 +1,16 @@
 {
-    "name": "shoppinglist",
+    "name": "shopping-list",
     "version": "1.0.0",
+    "productName": "Shopping List",
     "description": "Electron example app",
     "main": "main.js",
     "scripts": {
         "start": "./node_modules/.bin/electron .",
         "test": "test",
         "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/favicon.icns --prune=true --out=release-builds",
-        "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/favicon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Shopping List\"",
-        "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/favicon.png --prune=true --out=release-builds"
+        "package-win": "electron-packager . shopping-list --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/favicon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Shopping List\"",
+        "package-linux": "electron-packager . shopping-list --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/favicon.png --prune=true --out=release-builds",
+        "create-installer-win": "node installers/windows/createinstaller.js"
     },
     "repository": {
         "type": "git",
@@ -23,6 +25,7 @@
     "license": "MIT",
     "devDependencies": {
         "electron": "^1.8.2",
-        "electron-packager": "^11.0.1"
+        "electron-packager": "^11.0.1",
+        "electron-winstaller": "^2.6.4"
     }
 }
